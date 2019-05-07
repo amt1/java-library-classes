@@ -1,7 +1,8 @@
 public class Library {
     private int capacity;
-    private Book[] libraryStock;
     private int bookCounter;
+    private Book[] libraryStock;
+    // using array not arraylist as it would be faster for a big library
 
     public Library(int capacity){
         this.capacity = capacity;
@@ -26,5 +27,17 @@ public class Library {
 
     public Book checkBookAtIndex(int index) {
         return libraryStock[index];
+    }
+
+    public Book lendBookByIndex(int index) {
+        Book bookToLend = null;
+        if (index < bookCounter) {
+            bookToLend = libraryStock[index];
+            bookCounter--;
+            if (bookCounter > 0) libraryStock[index] = libraryStock[bookCounter];
+            libraryStock[bookCounter] = null;
+        }
+        return bookToLend;
+    // this needs some data validation / error checking
     }
 }

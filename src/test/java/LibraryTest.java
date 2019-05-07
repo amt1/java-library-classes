@@ -8,12 +8,16 @@ public class LibraryTest {
 
     Book book;
     Book book2;
+    Book book3;
+    Book book4;
     Library library;
 
     @Before
     public void before() {
         book = new Book("Jurassic Park", "Michael Crichton", "Thriller");
         book2 = new Book("The Shining", "Stephen King", "Horror");
+        book3 = new Book("The Dead Zone", "Stephen King", "Horror");
+        book4 = new Book("Bimbos of the Death Sun", "Sharyn McCrumb", "Humour");
 
         library = new Library(5);
     }
@@ -55,6 +59,29 @@ public class LibraryTest {
         library.addBook(book2);
         assertEquals(true, library.addBook(book));
         assertEquals(false, library.addBook(book2));
+    }
+
+    @Test
+    public void canLendBookByIndex() {
+        library.addBook(book);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+        assertEquals(4, library.getBookCount());
+
+        assertEquals(book2, library.lendBookByIndex(1));
+        assertEquals(3, library.getBookCount());
+
+        assertEquals(book4, library.lendBookByIndex(1));
+        assertEquals(2, library.getBookCount());
+
+        assertEquals(book3, library.lendBookByIndex(1));
+        assertEquals(1, library.getBookCount());
+        System.out.println("hello");
+        assertEquals(book, library.lendBookByIndex(0));
+        assertEquals(0, library.getBookCount());
+
+
     }
 }
 
