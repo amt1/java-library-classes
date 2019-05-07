@@ -83,5 +83,33 @@ public class LibraryTest {
 
 
     }
+    @Test
+    public void canCountGenres() {
+        library.addBook(book);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+        library.addBook(book);
+
+        library.listGenres();
+
+        library.lendBookByIndex(4);
+
+        library.listGenres();
+
+        library.lendBookByIndex(3);
+        library.listGenres();
+        library.lendBookByIndex(2);
+        library.listGenres();
+        library.lendBookByIndex(1);
+        library.listGenres();
+        library.lendBookByIndex(0);
+        System.out.println("all lent out");
+
+        library.listGenres();
+        library.listGenres();
+        library.listGenres();
+
+    }
 }
 

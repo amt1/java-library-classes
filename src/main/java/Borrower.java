@@ -30,6 +30,7 @@ public class Borrower {
         }
         System.out.println(msg);
         return success;
+        // I guess we'll be doing proper exception handling that will be better than this!
     }
 
     public Book checkIfBookBorrowed(int index) {
